@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Loan Eligibility & EMI Calculator
+
+// 1. User Input
+let name = prompt("Enter Name:");
+let ageStr = prompt("Enter Age:");
+let salaryStr = prompt("Enter Monthly Salary:");
+let loanStr = prompt("Enter Loan Amount:");
+console.log("Customer Name:", name);
+console.log("Enter Age:", ageStr);
+console.log("Enter Salary:", salaryStr);
+console.log("EnterLoan Amount:", loanStr);
+
+// Type Conversion Check
+console.log("Before conversion: ", typeof ageStr);   // string
+let age = Number(ageStr);
+let salary = Number(salaryStr);
+let loanAmount = Number(loanStr);
+console.log("After conversion: ", typeof age);       // number
+
+// 2. Eligibility Check (Logical Operators)
+if (age >= 21 && age <= 60 && salary >= 25000) {
+    console.log("Eligible ✅");
+} else {
+    console.log("Not Eligible ❌");
+}
+
+// 3. EMI Calculation (Operators)
+let emi = loanAmount;
+emi /= 12;   // Assignment operator
+console.log("EMI:", emi);
+
+// 4. Loan Category (If-Else)
+if (loanAmount > 500000) {
+    console.log("Loan Category: High Loan");
+} else if (loanAmount > 200000) {
+    console.log("Loan Category: Medium Loan");
+} else {
+    console.log("Loan Category: Low Loan");
+}
+
+// 5. Risk Level (Ternary Operator)
+let risk = (salary > 50000) ? "Low Risk" : "High Risk";
+console.log("Risk Level:", risk);
+
+// 6. Customer Type (Switch)
+let customerType;
+switch (true) {
+    case (emi > 40000):
+        customerType = "Premium Customer";
+        break;
+    case (emi > 20000):
+        customerType = "Standard Customer";
+        break;
+    default:
+        customerType = "Basic Customer";
+}
+console.log("Customer Type:", customerType);
+    </script>
+</body>
+</html>
