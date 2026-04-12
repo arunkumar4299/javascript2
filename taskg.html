@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Task Output</title>
+</head>
+<body>
+
+  <h1>Open Console to See Output </h1>
+
+  <script>
+    console.log("===== Task 1: E-commerce Cart System =====");
+
+    let cart1 = [
+      {name: "Shirt", price: 500},
+      {name: "Shoes", price: 1500}
+    ];
+
+    let cart2 = [
+      {name: "Watch", price: 2000}
+    ];
+
+    let mergedCart = [...cart1, ...cart2];
+    mergedCart.push({name: "Bag", price: 1000});
+    mergedCart.pop();
+
+    let total = mergedCart.reduce((sum, item) => sum + item.price, 0);
+
+    console.log("Cart:", mergedCart);
+    console.log("Total Price:", total);
+
+
+    console.log("===== Task 2: User Profile =====");
+
+    let user = {
+      name: "Naveen",
+      role: "Trainee",
+      salary: 20000
+    };
+
+    let update = {
+      role: "Developer",
+      salary: 50000
+    };
+
+    let updatedUser = {...user, ...update};
+    let {name, role, salary} = updatedUser;
+
+    console.log(`${name} is now a ${role} earning ${salary}`);
+
+
+    console.log("===== Task 3: Team Score =====");
+
+    function teamScore(teamName, ...scores) {
+      let total = scores.reduce((a, b) => a + b, 0);
+      let highest = Math.max(...scores);
+
+      console.log("Team:", teamName);
+      console.log("Scores:", scores);
+      console.log("Total:", total);
+      console.log("Highest:", highest);
+    }
+
+    teamScore("Warriors", 50, 60, 70);
+
+
+    console.log("===== Task 4: Nested Data =====");
+
+    let apiData = {
+      user: {
+        name: "ARUNKUMAR",
+        address: {
+          city: "chennai",
+          pincode: 587000
+        }
+      }
+    };
+
+    let {
+      user: {
+        name: userName,
+        address: {city, pincode}
+      }
+    } = apiData;
+
+    console.log(`${userName} lives in ${city} - ${pincode}`);
+
+
+    console.log("===== Task 5: Array Dashboard =====");
+
+    let users = ["A", "B", "C", "D", "E"];
+
+    users.splice(2, 2, "X", "Y");
+
+    let firstThree = users.slice(0, 3);
+    let hasB = users.includes("B");
+    let indexE = users.indexOf("E");
+
+    console.log(users);
+    console.log(firstThree);
+    console.log("Has B:", hasB);
+    console.log("Index of E:", indexE);
+
+
+    console.log("===== Task 6: Data Cleaning =====");
+
+    let messyData = [1, 2, [3, 4, [5]], null, undefined, "hello"];
+
+    let cleanData = messyData
+      .flat(Infinity)
+      .filter(item => item != null);
+
+    console.log(cleanData);
+
+
+    console.log("===== Task 7: Sorting Fix =====");
+
+    let prices = [1000, 200, 50, 5000];
+    prices.sort((a, b) => a - b);
+
+    console.log(prices);
+
+
+    console.log("===== Task 8: Analytics =====");
+
+    let orders = [
+      {id:1, amount:100},
+      {id:2, amount:200},
+      {id:3, amount:300}
+    ];
+
+    let totalRevenue = orders.reduce((sum, o) => sum + o.amount, 0);
+    let avg = totalRevenue / orders.length;
+
+    console.log("Total Revenue:", totalRevenue);
+    console.log("Average Order:", avg);
+
+
+    console.log("===== Task 9: Inventory =====");
+
+    let inventory = ["Pen", "Book"];
+
+    inventory.push("Pencil");
+    inventory.pop();
+    inventory.splice(1, 1, "Notebook");
+
+    console.log("Search Pen:", inventory.includes("Pen"));
+
+    let finalInventory = [...inventory, "Eraser"];
+    console.log(finalInventory);
+
+
+    console.log("===== Task 10: Interview Challenge =====");
+
+    function processData(...data) {
+      return data
+        .flat(Infinity)
+        .filter((v, i, arr) => arr.indexOf(v) === i)
+        .sort((a, b) => a - b);
+    }
+
+    console.log(processData(1,2,[3,4],[5,[6]],2,3));
+
+  </script>
+
+</body>
+</html>
