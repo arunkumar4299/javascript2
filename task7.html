@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Async JavaScript Tasks</title>
+</head>
+<body>
+  <h2>Check Console for Output</h2>
+
+  <script>
+    // 🔹 Task 1: Order System (setTimeout)
+    console.log("Order placed");
+
+    setTimeout(() => {
+      console.log("Preparing food");
+    }, 2000);
+
+    setTimeout(() => {
+      console.log("Food ready");
+    }, 4000);
+
+    setTimeout(() => {
+      console.log("Delivered");
+    }, 5000);
+
+
+    // 🔹 Task 2: Digital Clock (setInterval)
+    let count = 0;
+
+    let clock = setInterval(() => {
+      let time = new Date().toLocaleTimeString();
+      console.log("Time:", time);
+      count++;
+
+      if (count === 10) {
+        clearInterval(clock);
+        console.log("Clock stopped");
+      }
+    }, 1000);
+
+
+    // 🔹 Task 3: Callback Hell Simulation
+    function loginUser(callback) {
+      setTimeout(() => {
+        console.log("User Logged In");
+        callback();
+      }, 1000);
+    }
+
+    function getUserData(callback) {
+      setTimeout(() => {
+        console.log("User Data Fetched");
+        callback();
+      }, 1000);
+    }
+
+    function getUserPosts(callback) {
+      setTimeout(() => {
+        console.log("User Posts Fetched");
+      }, 1000);
+    }
+
+    // Calling in sequence (Callback Hell)
+    loginUser(() => {
+      getUserData(() => {
+        getUserPosts();
+      });
+    });
+
+
+    // 🔹 Task 4: Fake API Promise
+    function getProducts() {
+      return new Promise((resolve, reject) => {
+        let success = true; // change to false to test error
+
+        setTimeout(() => {
+          if (success) {
+            resolve([
+              { name: "Laptop", price: 50000 },
+              { name: "Mobile", price: 20000 }
+            ]);
+          } else {
+            reject("API Failed");
+          }
+        }, 2000);
+      });
+    }
+
+    // Using Promise
+    getProducts()
+      .then((data) => {
+        console.log("Products:", data);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      })
+      .finally(() => {
+        console.log("API Call Completed");
+      });
+
+  </script>
+</body>
+</html>
